@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ua" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <header th:insert="blocks/header :: header"></header>
+
+    <p class="p_text">Каталог</p>
+    <div class="div_database_wrapper">
+
+        <div th:each="el : ${posts}" class="div_database">
+            <p class="p_database" th:text="${el.title}"></p>
+            <p class="p_database_description" th:text="${el.full_text}"></p>
+            <a class="p2_database" th:href="'/catalog/' + ${el.id}"> Детально</a>
+        </div>
+
+    </div>
+
+    <header th:insert="blocks/footer :: footer"></header>
+</body>
+</html>

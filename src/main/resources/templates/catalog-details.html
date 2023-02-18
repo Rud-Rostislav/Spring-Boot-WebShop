@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ua" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог</title>
+    <link rel="stylesheet" th:href="@{/home.css}">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<p class="p_text">Детально про товар</p>
+<div class="div_database_wrapper">
+
+    <div th:each="el : ${post}" class="div_database_details">
+        <p class="p_database" th:text="${el.title}"></p>
+        <p class="p_database_description" th:text="${el.full_text}"></p>
+
+        <div class="details_edit">
+            <p class="p_details" th:text="'Переглядів:' + ${el.views}"></p>
+            <a class="p_details" th:href="'/catalog/' + ${el.id} + '/edit'">Редагувати</a>
+            <form th:action="'/catalog/' + ${el.id} + '/delete'" method="post">
+                <button th:href="'/catalog/' + ${el.id} + '/delete'" class="p_details" type="submit">Видалити</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<header th:insert="blocks/footer :: footer"></header>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ua" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Додати товар</title>
+    <link rel="stylesheet" th:href="@{/home.css}">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div>
+    <p class="p_text">Додати товар</p>
+
+    <form action="/catalog/add" method="post">
+
+        <input type="text" name="title" placeholder="Назва товару" class="add_form">
+        <textarea name="full_text" placeholder="Опис" class="add_form_textarea"></textarea>
+
+        <button type="submit" class="add_form">Додати на сайт</button>
+
+    </form>
+
+</div>
+
+<header th:insert="blocks/footer :: footer"></header>
+</body>
+</html>
