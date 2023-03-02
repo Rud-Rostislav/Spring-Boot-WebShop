@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Каталог</title>
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" th:href="@{/home.css}">
 </head>
 <body>
     <header th:insert="blocks/header :: header"></header>
 
-    <p class="p_text">Каталог</p>
+    <p class="p_text p_text_top">Каталог</p>
+
     <div class="div_database_wrapper">
 
-        <div th:each="el : ${posts}" class="div_database">
+        <div th:each="el : ${product}" class="div_database">
             <p class="p_database" th:text="${el.title}"></p>
-            <p class="p_database_description" th:text="${el.full_text}"></p>
+            <p class="p_database_description" th:text="${el.description}"></p>
             <a class="p2_database" th:href="'/catalog/' + ${el.id}"> Детально</a>
         </div>
 
