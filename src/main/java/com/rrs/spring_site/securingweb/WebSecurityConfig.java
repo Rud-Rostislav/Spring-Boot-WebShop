@@ -24,7 +24,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/", "/catalog", "/login", "/home.css",
                                 "/background_1.png", "/background_2.png", "/catalog/{id}", "/photos",
-                                "/photos1", "/photos2", "/photos3")
+                                "/photos{id}", "/photos/1", "/photos/2", "/photos/3")
                         .permitAll()
                         .requestMatchers(HttpMethod.POST, "/catalog/add").hasRole("ADMIN")
                         .anyRequest()
@@ -37,6 +37,7 @@ public class WebSecurityConfig {
                 .logout(LogoutConfigurer::permitAll);
         return http.build();
     }
+
 
 
     @Bean
