@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Вхід</title>
+  <link rel="stylesheet" th:href="@{/home.css}">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<form th:action="@{/login}" method="post">
+
+
+  <p class="p_text p_text_top" style="margin-top: 200px">
+    [[${param.error} ? 'Неправильний логін або пароль' : 'Вхід']]
+  </p>
+
+
+  <input type="text" name="username" placeholder="Нікнейм" class="add_form">
+  <input type="text" name="password" placeholder="Пароль" class="add_form">
+
+  <button type="submit" class="add_form">Вхід</button>
+
+</form>
+
+<header th:insert="blocks/footer :: footer"></header>
+</body>
+</html>
