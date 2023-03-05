@@ -20,7 +20,7 @@
 
         <div class="product_photo_div">
             <div th:each="photo : ${photos}">
-                <img th:src="@{/photos/{id}(id=${photo.id})}" class="product_photo"/><br><br>
+                <img th:src="@{/photos/{id}(id=${photo.id})}" class="product_photo" style="border-radius: 30px"/><br><br>
             </div>
         </div>
 

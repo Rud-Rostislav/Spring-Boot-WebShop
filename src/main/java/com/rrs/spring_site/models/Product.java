@@ -24,6 +24,9 @@ public class Product {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
+    @Column(name = "price")
+    private Double price;
+
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Photo> photos = new ArrayList<>();
     private Long previewPhotoId;
@@ -31,6 +34,14 @@ public class Product {
     public void addPhoto(Photo photo) {
         photo.setProduct(this);
         photos.add(photo);
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
 }

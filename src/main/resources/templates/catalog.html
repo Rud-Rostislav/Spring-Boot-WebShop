@@ -13,9 +13,12 @@
     <div class="div_database_wrapper">
 
         <div th:each="el : ${product}" class="div_database">
-            <p class="p_database" th:text="${el.title}"></p>
-            <p class="p_database_description" th:text="${el.description}"></p>
+            <p class="p_database" th:text="${el.title}" style="margin-top: 10px"></p>
+            <img th:if="${el.photos != null and el.photos.size() > 0 and el.photos[0].id != null}" th:src="@{/photos/{id}(id=${el.photos[0].id})}" class="product_photo" style="border-radius: 30px; max-height: 220px; display: flex; justify-content: center; margin: 50px auto;"/>
+            <p class="p_database_description" th:text="${el.description}" style="text-align: center"></p>
             <a class="p2_database" th:href="'/catalog/' + ${el.id}"> Детально</a>
+            <p class="p_database" style="font-size: 15px; margin-top: 80px;">Ціна</p>
+            <p th:text="${el.price}" style="font-size: 20px; text-align: center;"></p>
         </div>
 
     </div>

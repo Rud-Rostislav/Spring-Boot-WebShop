@@ -23,8 +23,7 @@ public class WebSecurityConfig {
         http.csrf().disable()
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/", "/catalog", "/login", "/home.css",
-                                "/background_1.png", "/background_2.png", "/catalog/{id}", "/photos",
-                                "/photos{id}", "/photos/1", "/photos/2", "/photos/3")
+                                "/background_1.png", "/background_2.png", "/catalog/{id}", "/photos/**")
                         .permitAll()
                         .requestMatchers(HttpMethod.POST, "/catalog/add").hasRole("ADMIN")
                         .anyRequest()

@@ -37,6 +37,7 @@ public class Photo {
 
     @Lob
     private byte[] bytes;
+    
 
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Product product;

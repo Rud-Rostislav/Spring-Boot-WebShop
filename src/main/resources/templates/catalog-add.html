@@ -8,29 +8,65 @@
 <body>
 <header th:insert="blocks/header :: header"></header>
 
-    <div>
-        <p class="p_text p_text_top">Додати товар</p>
+<div>
+    <p class="p_text p_text_top">Додати товар</p>
 
-        <form action="/catalog/add" method="post" enctype="multipart/form-data">
+    <form action="/catalog/add" method="post" enctype="multipart/form-data">
 
-            <input type="text" name="title" placeholder="Назва товару" class="add_form">
-            <textarea name="description" placeholder="Опис" class="add_form_textarea"></textarea>
+        <input type="text" name="title" placeholder="Назва товару" class="add_form">
+        <input type="number" min="0.00" max="100000.00" step="0.01" name="price" placeholder="Ціна" class="add_form">
+
+        <textarea name="description" placeholder="Опис" class="add_form_textarea"></textarea>
+
+        <label for="file1" class="add_form">Додати фото №1</label>
+        <input type="file" id="file1" name="file1" class="add_form" style="display:none;">
+
+        <label for="file2" class="add_form">Додати фото №2</label>
+        <input type="file" id="file2" name="file2" class="add_form" style="display:none;">
+
+        <label for="file3" class="add_form">Додати фото №3</label>
+        <input type="file" id="file3" name="file3" class="add_form" style="display:none;">
+
+        <div style="display: flex; justify-content: center;">
+            <img id="preview1" src="#" alt="" style="max-height: 200px; border-radius: 30px"/>
+            <img id="preview2" src="#" alt="" style="max-height: 200px; border-radius: 30px"/>
+            <img id="preview3" src="#" alt="" style="max-height: 200px; border-radius: 30px"/>
+        </div>
+
+        <button type="submit" class="add_form">Додати на сайт</button>
+
+    </form>
+
+</div>
 
 
-            <label for="file1" class="add_form">Додати фото</label>
-            <input type="file" id="file1" name="file1" class="add_form" style="display:none;">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#file1").change(function() {
+            readURL(this, '#preview1');
+            $('label[for="file1"]').text('Фото додано');
+        });
+        $("#file2").change(function() {
+            readURL(this, '#preview2');
+            $('label[for="file2"]').text('Фото додано');
+        });
+        $("#file3").change(function() {
+            readURL(this, '#preview3');
+            $('label[for="file3"]').text('Фото додано');
+        });
+    });
 
-            <label for="file2" class="add_form">Додати фото</label>
-            <input type="file" id="file2" name="file2" class="add_form" style="display:none;">
-
-            <label for="file3" class="add_form">Додати фото</label>
-            <input type="file" id="file3" name="file3" class="add_form" style="display:none;">
-
-            <button type="submit" class="add_form">Додати на сайт</button>
-
-        </form>
-
-    </div>
+    function readURL(input, preview) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $(preview).attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 
 <header th:insert="blocks/footer :: footer"></header>
 </body>
