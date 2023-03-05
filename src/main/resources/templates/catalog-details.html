@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Каталог</title>
     <link rel="stylesheet" th:href="@{/home.css}">
+
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
@@ -24,6 +25,7 @@
             </div>
         </div>
 
+
         <p class="p_database" style="font-size: 20px; margin-top: -60px;">Ціна</p>
         <p th:text="${el.price} + ' грн.'" style="font-size: 35px; text-align: center; margin-bottom: 100px"></p>
 
@@ -38,11 +40,9 @@
     </div>
 
 
+
+
 </div>
-
-
-
-
 
 <header th:insert="blocks/footer :: footer"></header>
 </body>

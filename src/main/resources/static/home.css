@@ -226,3 +226,15 @@ input::file-selector-button:hover {
 
 
 ::placeholder {color: #9b9b9b;}
+
+.slick-prev, .slick-next {
+    display: none !important;
+}
+
+.slick-dots {
+    bottom: 40px !important;
+}
+
+.slick-dots li button:before {
+    font-size: 10px !important;
+}

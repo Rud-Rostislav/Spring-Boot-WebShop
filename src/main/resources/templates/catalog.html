@@ -4,25 +4,49 @@
     <meta charset="UTF-8">
     <title>Каталог</title>
     <link rel="stylesheet" th:href="@{/home.css}">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css}">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css}">
 </head>
 <body>
-    <header th:insert="blocks/header :: header"></header>
+<header th:insert="blocks/header :: header"></header>
 
-    <p class="p_text p_text_top">Каталог</p>
+<p class="p_text p_text_top">Каталог</p>
 
-    <div class="div_database_wrapper">
+<div class="div_database_wrapper">
 
-        <div th:each="el : ${product}" class="div_database">
-            <p class="p_database" th:text="${el.title}" style="margin-top: 10px"></p>
-            <img th:if="${el.photos != null and el.photos.size() > 0 and el.photos[0].id != null}" th:src="@{/photos/{id}(id=${el.photos[0].id})}" class="product_photo" style="border-radius: 30px; max-height: 220px; display: flex; justify-content: center; margin: 50px auto;"/>
-            <p class="p_database_description" th:text="${el.description}" style="text-align: center"></p>
-            <a class="p2_database" th:href="'/catalog/' + ${el.id}"> Детально</a>
-            <p class="p_database" style="font-size: 15px; margin-top: 80px;">Ціна</p>
-            <p th:text="${el.price}" style="font-size: 20px; text-align: center;"></p>
+    <div th:each="el : ${product}" class="div_database">
+        <p class="p_database" th:text="${el.title}" style="margin-top: 10px"></p>
+        <div class="slider">
+            <th:block th:each="photo : ${el.photos}">
+                <img th:src="@{/photos/{id}(id=${photo.id})}" class="product_photo" style="border-radius: 30px; max-height: 400px; display: flex; justify-content: center; margin: 20px auto;"/>
+            </th:block>
         </div>
-
+        <p class="p_database_description" th:text="${el.description}" style="text-align: center"></p>
+        <a class="p2_database" th:href="'/catalog/' + ${el.id}"> Детально</a>
+        <p class="p_database" style="font-size: 15px; margin-top: 30px;">Ціна</p>
+        <p th:text="${el.price}" style="font-size: 20px; text-align: center;"></p>
     </div>
 
-    <header th:insert="blocks/footer :: footer"></header>
+</div>
+
+<header th:insert="blocks/footer :: footer"></header>
+
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js}"></script>
+<script>
+    $(document).ready(function(){
+        $('.slider').slick({
+            dots: true,
+            arrows: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            adaptiveHeight: true,
+            autoplay: true, // автоматична перемикач слайдів
+            autoplaySpeed: 5000 // перемикач слайдів кожні 5 секунд
+        });
+    });
+</script>
+
 </body>
 </html>
