@@ -46,7 +46,7 @@ body {
     flex: 28%;
     max-width: 400px;
     min-height: 500px;
-    height: 600px;
+    height: 665px;
     color: white;
     background: #181818;
     border-radius: 50px;
@@ -105,8 +105,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
-    gap: 85px;
+    gap: 300px;
 }
 
 .p_details {
@@ -115,7 +114,7 @@ body {
     border: none;
     color: #bdbdbd;
     background: none;
-    font-size: 15px;
+    font-size: 35px;
 }
 
 .p_text {
